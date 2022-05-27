@@ -25,3 +25,28 @@ function playRound(computerSelection, userSelection) {
         else if (computerSelection == "scissors") { return "Tie! You and the computer both choose 'Scissors'"; }
     }
 }
+
+function game() {
+    let userScore = 0;
+    let computerScore = 0;
+
+    for (let i = 0; i < 5; i++) {
+        console.log(`Round ${i + 1}\n\nUser Score: ${userScore}\nComputer Score: ${computerScore}\n\n`);
+        let computerMove = computerPlay();
+        let userMove = prompt("Your move: ", "Rock : Paper : Scissors");
+        console.log(`Computer move: ${computerMove}`);
+        console.log(`Your move: ${userMove}`);
+        let roundResult = playRound(userMove, computerMove);
+        console.log(roundResult);
+        if (roundResult.includes("You win")) { userScore++; }
+        else if (roundResult.includes("You lose")) { computerScore++; }
+    }
+
+    if (userScore > computerScore) {
+        console.log("You win the game!");
+    }
+    else if (computerScore > userScore) {
+        console.log("You lose the game!");
+    }
+    else { console.log("Tie! No one wins the game.") }
+}
