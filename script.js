@@ -26,27 +26,86 @@ function playRound(computerSelection, userSelection) {
     }
 }
 
-function game() {
-    let userScore = 0;
-    let computerScore = 0;
 
-    for (let i = 0; i < 5; i++) {
-        console.log(`Round ${i + 1}\n\nUser Score: ${userScore}\nComputer Score: ${computerScore}\n\n`);
-        let computerMove = computerPlay();
-        let userMove = prompt("Your move: ", "Rock : Paper : Scissors");
-        console.log(`Computer move: ${computerMove}`);
-        console.log(`Your move: ${userMove}`);
-        let roundResult = playRound(userMove, computerMove);
-        console.log(roundResult);
-        if (roundResult.includes("You win")) { userScore++; }
-        else if (roundResult.includes("You lose")) { computerScore++; }
-    }
+function changeGameState(userSelection) {
 
-    if (userScore > computerScore) {
-        console.log("You win the game!");
-    }
-    else if (computerScore > userScore) {
-        console.log("You lose the game!");
-    }
-    else { console.log("Tie! No one wins the game.") }
+    resultText.textContent = playRound(userSelection, computerPlay());
+    if (resultText.textContent.includes("You win")) { userScore++; }
+    else if (resultText.textContent.includes("You lose")) { computerScore++; }
+
+    scoresheet.textContent = `User score: ${userScore}
+    Computer score: ${computerScore}`;
 }
+
+
+const rockBtn = document.querySelector('.rock');
+const paperBtn = document.querySelector('.paper');
+const scissorsBtn = document.querySelector('.scissors');
+const resultText = document.querySelector('.result');
+const scoresheet = document.querySelector('.scoresheet');
+let computerScore = 0;
+let userScore = 0;
+
+
+
+rockBtn.addEventListener('click',() => changeGameState('rock'));
+paperBtn.addEventListener('click',() => changeGameState('paper'));   
+scissorsBtn.addEventListener('click', () => changeGameState('scissors'));
+
+    
+
+
+
+
+
+
+
+// function game() {
+
+//     let userScore = 0;
+//     let computerScore = 0;
+
+//     for (let i = 0; i < 5; i++) {
+//         console.log(`Round ${i + 1}\n\nUser Score: ${userScore}\nComputer Score: ${computerScore}\n\n`);
+//         let roundResult;
+
+        
+
+
+
+//         // console.log(`Computer move: ${computerMove}`);
+//         // console.log(`Your move: ${userMove}`);
+
+
+//         console.log(roundResult);
+//         if (roundResult.includes("You win")) { userScore++; }
+//         else if (roundResult.includes("You lose")) { computerScore++; }
+//     }
+
+//     if (userScore > computerScore) {
+//         console.log("You win the game!");
+//     }
+//     else if (computerScore > userScore) {
+//         console.log("You lose the game!");
+//     }
+//     else { console.log("Tie! No one wins the game.") }
+
+
+
+// }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
