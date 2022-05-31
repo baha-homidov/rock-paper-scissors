@@ -29,12 +29,30 @@ function playRound(computerSelection, userSelection) {
 
 function changeGameState(userSelection) {
 
+    
     resultText.textContent = playRound(userSelection, computerPlay());
     if (resultText.textContent.includes("You win")) { userScore++; }
     else if (resultText.textContent.includes("You lose")) { computerScore++; }
 
-    scoresheet.textContent = `User score: ${userScore}
-    Computer score: ${computerScore}`;
+    if (userScore == 5) {
+        scoresheet.textContent = `🙎🏻‍♂️ score: ${userScore}
+        🤖 score: ${computerScore}`; 
+        userScore = computerScore = 0;
+        resultText.textContent = "🎉YOU WON THE GAME🎉";
+        return;
+    }
+
+    if (computerScore == 5) {
+        scoresheet.textContent = `🙎🏻‍♂️ score: ${userScore}
+        🤖 score: ${computerScore}`;
+        userScore = computerScore = 0;
+        resultText.textContent = "❌YOU LOST THE GAME❌";
+        return;
+    }
+
+
+    scoresheet.textContent = `🙎🏻‍♂️ score: ${userScore}
+    🤖 score: ${computerScore}`;
 }
 
 
