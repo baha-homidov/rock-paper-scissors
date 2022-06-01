@@ -26,41 +26,56 @@ function playRound(computerSelection, userSelection) {
     }
 }
 
+function textToEmoji(text) {
+    text = text.toLowerCase();
+    if (text == 'rock') return '✊';
+    else if (text == 'paper') return '🖐'
+    else return '✌️';
+
+}
+
+
 
 function changeGameState(userSelection) {
 
+    let computerSelection = computerPlay();
+
+    userMoveIcon.textContent = textToEmoji(userSelection);
+    computerMoveIcon.textContent = textToEmoji(computerSelection);
     
-    resultText.textContent = playRound(userSelection, computerPlay());
+    resultText.textContent = playRound(computerSelection, userSelection);
     if (resultText.textContent.includes("You win")) { userScore++; }
     else if (resultText.textContent.includes("You lose")) { computerScore++; }
 
     if (userScore == 5) {
-        scoresheet.textContent = `🙎🏻‍♂️ score: ${userScore}
-        🤖 score: ${computerScore}`; 
+        scoreCount.textContent = `${userScore} : ${computerScore}`; 
         userScore = computerScore = 0;
-        resultText.textContent = "🎉YOU WON THE GAME🎉";
+        resultText.textContent = "YOU WON THE GAME";
+        userMoveIcon.textContent = computerMoveIcon.textContent = '🎉'
         return;
     }
 
     if (computerScore == 5) {
-        scoresheet.textContent = `🙎🏻‍♂️ score: ${userScore}
-        🤖 score: ${computerScore}`;
+        scoreCount.textContent = `${userScore} : ${computerScore}`;
         userScore = computerScore = 0;
-        resultText.textContent = "❌YOU LOST THE GAME❌";
+        resultText.textContent = "YOU LOST THE GAME";
+        userMoveIcon.textContent = computerMoveIcon.textContent = '❌';
         return;
     }
 
 
-    scoresheet.textContent = `🙎🏻‍♂️ score: ${userScore}
-    🤖 score: ${computerScore}`;
+    scoreCount.textContent = `${userScore} : ${computerScore}`;
+    return;
 }
 
 
 const rockBtn = document.querySelector('.rock');
 const paperBtn = document.querySelector('.paper');
 const scissorsBtn = document.querySelector('.scissors');
-const resultText = document.querySelector('.result');
-const scoresheet = document.querySelector('.scoresheet');
+const resultText = document.querySelector('.result .text');
+const scoreCount = document.querySelector('.score-count');
+const userMoveIcon = document.querySelector('.result .user-selection')
+const computerMoveIcon = document.querySelector('.result .computer-selection')
 let computerScore = 0;
 let userScore = 0;
 
@@ -78,39 +93,7 @@ scissorsBtn.addEventListener('click', () => changeGameState('scissors'));
 
 
 
-// function game() {
 
-//     let userScore = 0;
-//     let computerScore = 0;
-
-//     for (let i = 0; i < 5; i++) {
-//         console.log(`Round ${i + 1}\n\nUser Score: ${userScore}\nComputer Score: ${computerScore}\n\n`);
-//         let roundResult;
-
-        
-
-
-
-//         // console.log(`Computer move: ${computerMove}`);
-//         // console.log(`Your move: ${userMove}`);
-
-
-//         console.log(roundResult);
-//         if (roundResult.includes("You win")) { userScore++; }
-//         else if (roundResult.includes("You lose")) { computerScore++; }
-//     }
-
-//     if (userScore > computerScore) {
-//         console.log("You win the game!");
-//     }
-//     else if (computerScore > userScore) {
-//         console.log("You lose the game!");
-//     }
-//     else { console.log("Tie! No one wins the game.") }
-
-
-
-// }
 
 
 

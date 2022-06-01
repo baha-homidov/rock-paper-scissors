@@ -1,31 +1,128 @@
-body {
+/* body {
     display: flex;
     flex-direction: column;
     justify-content: center;
     align-items: center;
     padding: 17%;
     border: 1px solid red;
+} */
+
+.container {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    border: 1px solid blue;
+    gap: 5px;
+    position: absolute;
+    top: 0px;
+    right: 0px;
+    bottom: 0px;
+    left: 0px;
 }
+
+
+.result {
+    display: flex;
+    border: 1px solid red;
+    border-radius: 10px;
+    padding: 10px;
+    align-items: center;
+    justify-content: center;
+    gap: 5%;
+}
+
+.result .text {
+    font-family: monospace, sans-serif;
+    font-weight: 550;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    font-size: 30px;
+    flex-basis: 100px;
+    flex-grow: 0.6;
+    padding: 10px;
+    border: 1px solid red;
+}
+
+.result div {  /* user and computer icons */
+    border: 1px solid red;
+    border-radius: 10px;
+    font-size: 70px;
+    padding: 10px;
+    text-align: center;
+    padding: 0px;
+    padding-left: 10px;
+    padding-right: 10px;
+}
+
+
+.score {
+    font-size: 40px;
+    border: 1px solid green;
+    border-radius: 10px;
+    padding: 20px;
+}
+
+div.scoreboard {
+    display: flex;
+    gap: 12px;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.icon {
+    font-size: 60px;
+}
+
+.score .text {
+    font-family: monospace, sans-serif;
+    font-size: 25px;
+    text-align: center;
+}
+
+.score-count {
+    font-family: monospace, sans-serif;
+    font-size: 35px;
+    font-weight: 600px;
+}
+
+
+
+
+
+
+
 
 .buttons {
     display: flex;
-    list-style: none;
+    flex-direction: row;
     justify-content: center;
     align-items: center;
-    padding: 0px;
-    gap: 15px;
-    flex: 1 1 auto;
+    gap: 30px;
+    border: 1px solid red;
+    flex-shrink: 1;
+    margin: 0px;
+
 }
 
 button {
-    font-size: 45px;
+    font-size: 40px;
+    background-color: white;
+    border-radius: 20px;
+    min-width: 100px;
+    min-width: 100px;
+    flex-grow: 1;
 }
+
+button:active {
+    background-color: #3e8e41;
+    box-shadow: 0 3px #666;
+    transform: translateY(3px);
+  }
 
 .result {
     padding: 5%;
     font-size: 40px;
-}
 
-.scoresheet {
-    font-size: 40px;
 }
