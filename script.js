@@ -42,13 +42,19 @@ function changeGameState(userSelection) {
 
     userMoveIcon.textContent = textToEmoji(userSelection);
     computerMoveIcon.textContent = textToEmoji(computerSelection);
-    
+
     resultText.textContent = playRound(computerSelection, userSelection);
-    if (resultText.textContent.includes("You win")) { userScore++; }
-    else if (resultText.textContent.includes("You lose")) { computerScore++; }
+    if (resultText.textContent.includes("You win")) {
+        userScore++; resultText.style.background = "#21D19F";
+    }
+    else if (resultText.textContent.includes("You lose")) {
+        computerScore++;
+        resultText.style.background = "#E84855";
+    }
+    else { resultText.style.background = "#0075C4"; }
 
     if (userScore == 5) {
-        scoreCount.textContent = `${userScore} : ${computerScore}`; 
+        scoreCount.textContent = `${userScore} : ${computerScore}`;
         userScore = computerScore = 0;
         resultText.textContent = "YOU WON THE GAME";
         userMoveIcon.textContent = computerMoveIcon.textContent = '🎉'
@@ -81,11 +87,11 @@ let userScore = 0;
 
 
 
-rockBtn.addEventListener('click',() => changeGameState('rock'));
-paperBtn.addEventListener('click',() => changeGameState('paper'));   
+rockBtn.addEventListener('click', () => changeGameState('rock'));
+paperBtn.addEventListener('click', () => changeGameState('paper'));
 scissorsBtn.addEventListener('click', () => changeGameState('scissors'));
 
-    
+
 
 
 
